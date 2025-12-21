@@ -467,9 +467,7 @@ require('lazy').setup({
         require('Comment.api').toggle.linewise.current()
       end, { desc = 'Toggle comment' })
 
-      vim.keymap.set('v', '<C-_>', function()
-        require('Comment.api').toggle.linewise(vim.fn.visualmode())
-      end, { desc = 'Toggle comment (visual)' })
+      vim.keymap.set('v', '<C-_>', 'gcgv', { remap = true, silent = true, desc = 'Toggle comment (visual mode)' })
     end,
   },
 
