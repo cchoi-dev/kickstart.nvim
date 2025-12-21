@@ -459,6 +459,17 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      -- Shortcuts for toggling comments
+      -- NOTE: If doing this on iTerm2, you need to add a key binding to your profile
+      --       to have Cmd + / send hex code 0x1f to make it actually work
+      vim.keymap.set('n', '<C-_>', function()
+        require('Comment.api').toggle.linewise.current()
+      end, { desc = 'Toggle comment' })
+
+      vim.keymap.set('v', '<C-_>', function()
+        require('Comment.api').toggle.linewise(vim.fn.visualmode())
+      end, { desc = 'Toggle comment (visual)' })
     end,
   },
 
@@ -940,8 +951,9 @@ require('lazy').setup({
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+    main = 'nvim-treesitter.config', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
       ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
@@ -962,6 +974,11 @@ require('lazy').setup({
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  },
+  { -- Shortcuts for commenting code
+    'numToStr/Comment.nvim',
+    event = 'VeryLazy',
+    opts = {},
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
