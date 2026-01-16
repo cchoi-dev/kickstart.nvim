@@ -84,6 +84,14 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
+-- My custom added vim settings
+vim.opt.tabstop = 4 -- A TAB character looks like 4 spaces
+vim.opt.expandtab = true -- Pressing the TAB key inserts spaces instead of a TAB character
+vim.opt.softtabstop = 4 -- Number of spaces inserted/deleted on Tab/Backspace keypress
+vim.opt.shiftwidth = 4 -- Number of spaces used for each step of (auto)indentation
+
+-- End of custom added vim settings
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
