@@ -520,11 +520,20 @@ require('lazy').setup({
       -- Shortcuts for toggling comments
       -- NOTE: If doing this on iTerm2, you need to add a key binding to your profile
       --       to have Cmd + / send hex code 0x1f to make it actually work
+
+      -- Mac configs
       vim.keymap.set('n', '<C-_>', function()
         require('Comment.api').toggle.linewise.current()
       end, { desc = 'Toggle comment' })
 
       vim.keymap.set('v', '<C-_>', 'gcgv', { remap = true, silent = true, desc = 'Toggle comment (visual mode)' })
+
+      -- Linux/Windows configs
+      vim.keymap.set('n', '<C-/>', function()
+        require('Comment.api').toggle.linewise.current()
+      end, { desc = 'Toggle comment' })
+
+      vim.keymap.set('v', '<C-/>', 'gcgv', { remap = true, silent = true, desc = 'Toggle comment (visual mode)' })
     end,
   },
 
