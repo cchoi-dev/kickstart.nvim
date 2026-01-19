@@ -558,6 +558,13 @@ require('lazy').setup({
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
     },
+    opts = {
+      servers = {
+        clangd = {
+          mason = false,
+        },
+      },
+    },
     config = function()
       -- Brief aside: **What is LSP?**
       --
@@ -1034,6 +1041,13 @@ require('lazy').setup({
     'numToStr/Comment.nvim',
     event = 'VeryLazy',
     opts = {},
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true,
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
