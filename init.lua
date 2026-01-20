@@ -567,13 +567,6 @@ require('lazy').setup({
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
     },
-    opts = {
-      servers = {
-        clangd = {
-          mason = false,
-        },
-      },
-    },
     config = function()
       -- Brief aside: **What is LSP?**
       --
