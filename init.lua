@@ -235,6 +235,13 @@ vim.keymap.set({ 'n' }, '<A-j>', '<C-w>j')
 vim.keymap.set({ 'n' }, '<A-k>', '<C-w>k')
 vim.keymap.set({ 'n' }, '<A-l>', '<C-w>l')
 
+-- Keymap for undoing/removing tabs
+vim.keymap.set('i', '<S-Tab>', '<C-d>', { noremap = true, silent = true })
+
+-- Keymap for deleting whole words at a time
+vim.keymap.set('i', '<A-BS>', '<C-w>', { desc = 'Deletes a whole word' })
+vim.keymap.set('i', '<C-BS>', '<C-w>', { desc = 'Deletes a whole word' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`, `:h autocmd`, `:h nvim_create_autocmd()`
 
@@ -746,7 +753,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -910,7 +917,8 @@ require('lazy').setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        -- preset = 'default',
+        preset = 'super-tab', -- VSCode style - Tab/S-Tab for cycling through autocompletions
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
